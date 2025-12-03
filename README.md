@@ -79,7 +79,12 @@
   </div>
 
   <script>
-    lucide.createIcons();
+    // Wait for page to load completely
+    window.addEventListener('DOMContentLoaded', function() {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
 
     /* --------------------------
          Data (เหมือน React)
@@ -151,8 +156,7 @@
       resources: [
         { 
           title: "Data Driven Teaching and Real Time Decision Making in Education Management",
-          journal: "ICFNDS '24: Proceedings of the 8th International Conference on Future Networks & Distributed Systems
-",
+          journal: "ICFNDS '24: Proceedings of the 8th International Conference on Future Networks & Distributed Systems",
           url: "https://dl.acm.org/doi/10.1145/3726122.3726232"
         }
       ]
@@ -318,28 +322,11 @@
              Draw Card
     ---------------------------*/
     function drawCard(topicFilter = null) {
-      // Daily mode locking
-      if (mode === "daily") {
-        const todayKey = localStorage.getItem("todayReading");
-        if (todayKey) {
-          alert("คุณได้ทำนายไปแล้ววันนี้ กลับมาใหม่พรุ่งนี้นะคะ 🙏");
-          return;
-        }
-      }
-
       let cards = tarotCards;
       if (topicFilter) cards = tarotCards.filter(c => c.category === topicFilter);
 
       const randomCard = cards[Math.floor(Math.random() * cards.length)];
       selectedCard = randomCard;
-
-      // Save daily
-      if (mode === "daily") {
-        localStorage.setItem("todayReading", JSON.stringify({
-          date: new Date().toDateString(),
-          card: randomCard
-        }));
-      }
 
       renderResult(randomCard);
     }
