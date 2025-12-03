@@ -76,6 +76,13 @@
 
     <!-- Result Card -->
     <div id="resultCard" class="hidden bg-white rounded-2xl p-6 shadow-xl border border-pink-200"></div>
+    
+    <!-- Footer -->
+    <div class="text-center mt-12 pb-6">
+      <p class="text-pink-600 text-sm font-medium">
+        🌙 สร้างสรรค์ด้วยความปรารถนาดีต่อผู้บริหารการศึกษาไทยทุกท่าน 🌙
+      </p>
+    </div>
   </div>
 
   <script>
